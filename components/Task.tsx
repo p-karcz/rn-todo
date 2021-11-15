@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 interface Props {
     text: string,
-    onPress: () => void
+    onPress?: () => void
 }
 
 const Task = (props: Props) => {
