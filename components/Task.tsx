@@ -1,19 +1,24 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 interface Props {
     text: string,
-    onPress?: () => void
+    color: string,
+    opacity: number,
+    done?: () => void,
+    delete?: () => void
 }
 
 const Task = (props: Props) => {
     return (
         <View style={styles.item}>
             <View style={styles.itemLeft}>
-                <TouchableOpacity style={styles.square} onPress={props.onPress}/>
+                <TouchableOpacity style={[styles.square, { backgroundColor: props.color }]} onPress={props.done}/>
                 <Text>{props.text}</Text>
             </View>
-            <View style={styles.circular}/>
+            <TouchableOpacity onPress={props.delete}>
+                <Image style={[styles.taskBin, { opacity: props.opacity }]} source={require('../assets/bin.png')}/>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -36,7 +41,6 @@ const styles = StyleSheet.create({
     square: {
         width: 24,
         height: 24,
-        backgroundColor: '#55bcf6',
         opacity: 0.4,
         borderRadius: 5,
         marginRight: 15
@@ -44,12 +48,10 @@ const styles = StyleSheet.create({
     itemText: {
         maxWidth: '80%'
     },
-    circular: {
-        width: 12,
-        height: 12,
-        borderColor: '#55bcf6',
-        borderWidth: 2,
-        borderRadius: 5
+    taskBin: {
+        width: 36,
+        height: 36,
+        tintColor: '#55bcf6'
     }
 })
 
