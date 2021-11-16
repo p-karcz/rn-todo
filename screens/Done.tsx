@@ -9,11 +9,11 @@ export default function Done({ route, navigation }: DoneProps) {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.tasksWrapper}>
-                    {
-                        route.params.doneTasks.map((item, index) => {
-                            return <Task key={index} text={item} color={'#93e887'} opacity={0}/>
-                        })
-                    }
+                {
+                    route.params.doneTasks.map((item, index) => {
+                    return <Task key={index} text={item} color={'#93e887'} opacity={0}/>
+                    })
+                }
                 </View>
             </ScrollView>
         </View>
